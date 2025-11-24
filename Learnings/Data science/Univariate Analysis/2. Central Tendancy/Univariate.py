@@ -35,7 +35,7 @@ class Univariate:
     def _Univariate(quan, dataset):
         descriptive = pd.DataFrame(
             index=["Mean", "Median", "Mode", "Q1:25%", "Q2:50%", "Q3:75%", "Q4:100%",
-                   "IQR", "1.5 Rule", "Lesser", "Greater", "Min", "Max"],
+                   "IQR", "1.5 Rule", "Lesser", "Greater", "Min", "Max","Kurtosis","skew"],
             columns=quan
         )
         
@@ -63,6 +63,9 @@ class Univariate:
             descriptive.loc["Min", col] = dataset[col].min()
             descriptive.loc["Max", col] = dataset[col].max()
 
+            descriptive.loc["Kurtosis", col] = dataset[col].kurtosis()
+            descriptive.loc["skew", col] = dataset[col].skew()
+        
         return descriptive
     
     @staticmethod
