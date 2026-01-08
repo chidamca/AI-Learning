@@ -35,7 +35,7 @@ class Univariate:
     def _Univariate(quan, dataset):
         descriptive = pd.DataFrame(
             index=["Mean", "Median", "Mode", "Q1:25%", "Q2:50%", "Q3:75%", "Q4:100%",
-                   "IQR", "1.5 Rule", "Lesser", "Greater", "Min", "Max","Kurtosis","skew", "Var",'Std'],
+                   "IQR", "1.5 Rule", "Lesser", "Greater", "Min", "Max","Kurtosis","skew","Var",'Std'],
             columns=quan
         )
         
@@ -68,6 +68,7 @@ class Univariate:
 
             descriptive.loc["Var", col] = dataset[col].var()
             descriptive.loc["Std", col] = dataset[col].std()
+
         
         return descriptive
     
